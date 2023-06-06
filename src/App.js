@@ -1,26 +1,20 @@
 import "./styles.css";
 import {useState, useEffect} from "react"
+import {useLocalStorage} from "./useLocalStorage"
 export default function App() {
-  const [data, setData] = useState("")
-  
-  useEffect(() => {
-    const datos = window.localStorage.getItem("My data")
-    if (datos !== null) setData(JSON.parse(datos))
-  }, [])
-  
-  useEffect(() => {
-    window.localStorage.setItem("My data", JSON.stringify(data))
-  }, [data])
-  
+  const [text, setText] = useLocalStorage("key", "")
+  const handleSave = (e) => {
+    setText(e.target.value)
+  }
   return (
     <div className="App">
       <input 
         type="text" 
         placeholder="Enter your name" 
-        value={data} 
-        onChange={e => setData(e.target.value)} 
+        value={text} 
+        onChange={e => setText(e.target.value)} 
       />
-      <button onClick={() => setData(data)}>Gurdar</button>
+      <button onClick={handleSave}>Gurdar</button>
     </div>
   );
 }
