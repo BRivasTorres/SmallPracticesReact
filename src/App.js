@@ -1,10 +1,10 @@
-import Button from "./components/Button";
 import "./styles.css";
-import {Button} from "../src/components/Button"
+import Button from "./components/Button";
 export default function App() {
   return (
     <div className="App">
-        <Button />   
+      <h2>Practicando Local Storage con React</h2>
+      <Button />
     </div>
-  )
+  );
 }

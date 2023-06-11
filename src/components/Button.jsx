@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-
-const [text, setText] = useState("");
-const [valueSaved, setValueSaved] = useLocalStorage("key", "");
+import { useLocalStorage } from "../useLocalStorage";
 
 const Button = () => {
+  const [text, setText] = useState("");
+  const [valueSaved, setValueSaved] = useLocalStorage("key", "");
+
   useEffect(() => {
-    setValueSaved(valueSaved);
+    setText(valueSaved);
   }, [valueSaved]);
 
   const handleSave = () => {
@@ -20,7 +21,7 @@ const Button = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={handleSave}>Gurdar</button>
+      <button onClick={handleSave}>Guardar</button>
     </div>
   );
 };
