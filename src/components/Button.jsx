@@ -6,15 +6,18 @@ const Button = () => {
     input1: { text: "" },
     input2: { text: "" },
   });
-  const [valueSaved, setValueSaved] = useLocalStorage("key", "");
+  const [valueSaved, setValueSaved] = useLocalStorage("key", {
+    input1: { text: "" },
+    input2: { text: "" },
+  });
 
   useEffect(() => {
     setInputs(valueSaved);
   }, [valueSaved]);
 
   const handleSave = (val) => {
-    setValueSaved(inputs);
-    console.log(val)
+    setValueSaved(inputs[val].text.text);
+    console.log(inputs[val].text.text);
   };
 
   const handleChange = (e) => {
