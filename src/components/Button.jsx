@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocalStorage } from "../useLocalStorage";
 
 const Button = () => {
-  const [text, setText] = useState("");
   const [inputs, setInputs] = useState({
     input1: { text: "" },
     input2: { text: "" },
@@ -10,11 +9,12 @@ const Button = () => {
   const [valueSaved, setValueSaved] = useLocalStorage("key", "");
 
   useEffect(() => {
-    setText(valueSaved);
+    setInputs(valueSaved);
   }, [valueSaved]);
 
-  const handleSave = () => {
-    setValueSaved(text);
+  const handleSave = (val) => {
+    setValueSaved(inputs);
+    console.log(val)
   };
 
   const handleChange = (e) => {
@@ -23,7 +23,6 @@ const Button = () => {
       ...prevInputs,
       [name]: { text: value },
     }));
-    console.log(name, value);
   };
 
   return (
@@ -31,10 +30,21 @@ const Button = () => {
       <input
         type="text"
         placeholder="Enter your name"
-        value={text}
+        value={inputs.input1.text}
         onChange={handleChange}
+        name="input1"
       />
-      <button onClick={handleSave}>Guardar</button>
+      <button onClick={() => handleSave("input1")}>Guardar</button>
+      <br />
+      <br />
+      <input
+        type="email"
+        placeholder="Enter your name"
+        value={inputs.input2.text}
+        onChange={handleChange}
+        name="input2"
+      />
+      <button onClick={() => handleSave("input2")}>Guardar</button>
     </div>
   );
 };
