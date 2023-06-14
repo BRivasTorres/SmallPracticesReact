@@ -14,12 +14,12 @@ const Button = () => {
   useEffect(() => {
     setInputs(valueSaved);
   }, [valueSaved]);
+  console.log(valueSaved);
 
   const handleSave = (val) => {
     setValueSaved((prevVal) => ({
       ...prevVal,
       [val]: { text: valueSaved[val].text },
-    }));
   };
 
   const handleChange = (e) => {
@@ -35,7 +35,7 @@ const Button = () => {
       <input
         type="text"
         placeholder="Enter your name"
-        value={inputs.input1.text}
+        value={inputs.input1?.text}
         onChange={handleChange}
         name="input1"
       />
@@ -45,7 +45,7 @@ const Button = () => {
       <input
         type="email"
         placeholder="Enter your name"
-        value={inputs.input2.text}
+        value={inputs.input2?.text}
         onChange={handleChange}
         name="input2"
       />
