@@ -10,16 +10,16 @@ const Button = () => {
     input1: { text: "" },
     input2: { text: "" },
   });
-
   useEffect(() => {
     setInputs(valueSaved);
   }, [valueSaved]);
-  console.log(valueSaved);
 
   const handleSave = (val) => {
     setValueSaved((prevVal) => ({
       ...prevVal,
-      [val]: { text: valueSaved[val].text },
+      [val]: { text: inputs[val].text },
+    }));
+    console.log(inputs[val]);
   };
 
   const handleChange = (e) => {
