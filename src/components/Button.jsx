@@ -15,11 +15,13 @@ const Button = () => {
   }, [valueSaved]);
 
   const handleSave = (val) => {
+    let values = { [val]: { text: inputs[val].text.text } };
     setValueSaved((prevVal) => ({
       ...prevVal,
       [val]: { text: inputs[val].text },
     }));
-    console.log(inputs[val]);
+    //console.log(inputs[val]);
+    console.log(values);
   };
 
   const handleChange = (e) => {
