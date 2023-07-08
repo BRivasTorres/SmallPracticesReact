@@ -15,10 +15,10 @@ const Button = () => {
   }, [storedValue]);
 
   const handleSave = (val) => {
-    setStoredValue({
-      ...storedValue,
-      [val]: { text: inputs[val].text },
-    });
+    setStoredValue((prevVal) => ({
+      ...prevVal,
+      [val]: { text: inputs[val]?.text },
+    }));
   };
 
   const handleChange = (e) => {
